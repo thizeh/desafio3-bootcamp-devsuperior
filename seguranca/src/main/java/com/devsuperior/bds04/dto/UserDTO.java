@@ -6,20 +6,22 @@ import java.util.Set;
 
 import javax.validation.constraints.Email;
 
+import com.devsuperior.bds04.entities.User;
+
 
 public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
 	
-	@Email(message = "Digite um e-mail válido")
+	@Email(message = "Favor entrar com um email válido")
 	private String email;
 	// private String password; para nao transitar no dto por padrao
 
 	Set<RoleDTO> roles = new HashSet<>();
 
 	public UserDTO() {
-
+		
 	}
 
 	public UserDTO(Long id, String email, String password) {
@@ -27,6 +29,12 @@ public class UserDTO implements Serializable {
 
 		this.email = email;
 		// this.password = password;
+	}
+	
+	public UserDTO(User entity) {
+		id = entity.getId();
+		email = entity.getEmail();
+		entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
 	}
 
 

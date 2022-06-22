@@ -1,0 +1,54 @@
+package com.devsuperior.bds04.dto;
+
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.validation.constraints.Email;
+
+
+public class UserDTO implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private Long id;
+	
+	@Email(message = "Digite um e-mail válido")
+	private String email;
+	// private String password; para nao transitar no dto por padrao
+
+	Set<RoleDTO> roles = new HashSet<>();
+
+	public UserDTO() {
+
+	}
+
+	public UserDTO(Long id, String email, String password) {
+		this.id = id;
+
+		this.email = email;
+		// this.password = password;
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Set<RoleDTO> getRoles() {
+		return roles;
+	}
+
+}
