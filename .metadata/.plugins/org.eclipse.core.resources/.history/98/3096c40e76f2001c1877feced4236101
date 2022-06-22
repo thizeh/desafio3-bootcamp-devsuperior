@@ -14,7 +14,7 @@ public class UserDTO implements Serializable {
 
 	private Long id;
 	
-	@Email(message = "Favor entrar com um email válido")	
+	@Email(message = "Favor entrar com um email válido")
 	private String email;
 	// private String password; para nao transitar no dto por padrao
 
